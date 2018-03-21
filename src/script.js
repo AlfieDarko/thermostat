@@ -4,43 +4,48 @@ $(document).ready(function() {
 
   $("#up").click(function() {
     thermostat.up(1)
-    reloadTemp()
+
+    $(temp)
+      .text(thermostat.temp);
   })
 
   $("#down").click(function() {
     thermostat.down(1)
-    reloadTemp()
-  })
-
-  $("#reset").click(function() {
-    thermostat.reset()
-    reloadTemp()
-  })
-
-  function reloadTemp() {
     $(temp)
-      .replaceWith("<div id='temp'>" +
-        thermostat.temp + "</div>");
-  }
+      .text(
+        thermostat.temp);
+  })
+
+
+
+
+
+
+
+
 
   $("#powerSaveMode").click(function() {
 
     if (!thermostat.powerSave) {
       thermostat.powerSaveMode(true)
       $(powerSaveModeDiv)
-        .replaceWith(
-          "<div id='powerSaveModeDiv'>" +
-          "Power Save Mode on" +
-          "</div>");
+        .text("Power Save Mode on");
 
     } else if (thermostat.powerSave) {
       thermostat.powerSaveMode(false)
       $(powerSaveModeDiv)
-        .replaceWith(
-          "<div id='powerSaveModeDiv'>" +
-          "Power Save Mode off" +
-          "</div>");
+        .text("Power Save Mode off");
     }
   })
+
+  $("#reset").click(function() {
+    thermostat.reset()
+
+    $(temp)
+      .text(thermostat.temp);
+  })
+
+
+
 
 });
