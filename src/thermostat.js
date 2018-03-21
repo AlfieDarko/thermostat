@@ -14,7 +14,7 @@ function Thermostat() {
 
 Thermostat.prototype.reset = function() {
   this.temp = 20
-  this.energyUsageCheck()
+  this._energyUsageCheck()
 };
 
 Thermostat.prototype.powerSaveMode = function(bool) {
@@ -23,12 +23,19 @@ Thermostat.prototype.powerSaveMode = function(bool) {
     this.maxTemp = 25
     return "Power Save Mode On"
 
+    // if (this.temp > this.maxTemp) {
+    //   this.temp = 25
+    // }
+
   } else {
     this.powerSave = false
     this.maxTemp = 32
     return "Power Save Mode Off"
 
   }
+
+
+
 };
 
 Thermostat.prototype.up = function(number) {
@@ -36,12 +43,12 @@ Thermostat.prototype.up = function(number) {
   result = this.temp + number
 
   if (result > this.maxTemp) {
-    return "Max temp reached";
+    return "Maximum temp reached";
   } else {
     this.temp += number;
   }
 
-  this.energyUsageCheck()
+  this._energyUsageCheck()
 };
 
 Thermostat.prototype.down = function(number) {
@@ -54,10 +61,10 @@ Thermostat.prototype.down = function(number) {
     this.temp -= number;
   }
 
-  this.energyUsageCheck()
+  this._energyUsageCheck()
 };
 
-Thermostat.prototype.energyUsageCheck = function() {
+Thermostat.prototype._energyUsageCheck = function() {
   if (this.temp < 18) {
     this.energyUsage = "low-usage";
   } else if (this.temp > 18 && this.temp < 25) {

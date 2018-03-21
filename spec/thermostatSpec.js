@@ -15,6 +15,10 @@ describe("Thermostat", function() {
       thermostat.up(4);
       expect(thermostat.temp).toEqual(24);
     });
+
+    it("You cant go above 32 degrees on the thermostat", function() {
+      expect(thermostat.up(15)).toEqual("Maximum temp reached");
+    });
   });
 
   describe('#down', function() {
@@ -39,14 +43,20 @@ describe("Thermostat", function() {
       expect(thermostat.powerSave).toEqual(false);
     });
 
-    it("when powerSaveMode is on, max temp is 25 ", function() {
+    it("when powerSaveMode is on, max temp is 25", function() {
       thermostat.powerSaveMode(true)
-      expect(thermostat.up(10)).toEqual("Max temp reached");
+      expect(thermostat.up(6)).toEqual("Maximum temp reached");
+    });
+
+    it("if temperature is above 25 powerSaveMode reduces it to 25", function(){
+      thermostat.up(10)
+      thermostat.powerSaveMode(true)
+      expect(thermostat.temp).toEqual(25);
     });
 
     it("when powerSaveMode is of, max temp is 32 ", function() {
       thermostat.powerSaveMode(false)
-      expect(thermostat.up(15)).toEqual("Max temp reached");
+      expect(thermostat.up(13)).toEqual("Maximum temp reached");
     });
   });
 
