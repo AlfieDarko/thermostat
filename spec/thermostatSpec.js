@@ -49,8 +49,9 @@ describe("Thermostat", function() {
     });
 
     it("if temperature is above 25 powerSaveMode reduces it to 25", function(){
-      thermostat.up(10)
-      thermostat.powerSaveMode(true)
+      thermostat.powerSaveMode(false);
+      thermostat.up(10);
+      thermostat.powerSaveMode(true);
       expect(thermostat.temp).toEqual(25);
     });
 

@@ -21,11 +21,10 @@ Thermostat.prototype.powerSaveMode = function(bool) {
   if (bool) {
     this.powerSave = true
     this.maxTemp = 25
+    if (this.temp > this.maxTemp) {
+      this.temp = 25
+    }
     return "Power Save Mode On"
-
-    // if (this.temp > this.maxTemp) {
-    //   this.temp = 25
-    // }
 
   } else {
     this.powerSave = false
