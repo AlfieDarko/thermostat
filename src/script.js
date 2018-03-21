@@ -16,14 +16,6 @@ $(document).ready(function() {
         thermostat.temp);
   })
 
-
-
-
-
-
-
-
-
   $("#powerSaveMode").click(function() {
 
     if (!thermostat.powerSave) {

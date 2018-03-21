@@ -5,6 +5,7 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" charset="utf-8"></script>
   <script src="./src/thermostat.js" charset="utf-8"></script>
   <script src="./src/script.js" charset="utf-8"></script>
+  <script src="./src/fetch.js" charset="utf-8"></script>
 
 
   <meta charset="utf-8">
@@ -25,6 +26,10 @@
   <div id="powerSaveModeDiv">
 
   </div>
+
+  <input id="city" type="text"></input>
+  <button onclick="getTemperature(document.getElementById('city').value)">get json</button>
+  <p id="weather_report"></p>
 
   <h4>Weather in my city</h4>
 </body>
