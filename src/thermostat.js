@@ -4,9 +4,9 @@ function Thermostat() {
   this.powerSave = true
   this.energyUsage = "medium-usage";
 
-  if (this.powerSave) {
+  if (this.powerSave == true) {
     this.maxTemp = 25
-  } else {
+  } else if (this.powerSave == false) {
     this.maxTemp = 32
   }
 
@@ -20,8 +20,14 @@ Thermostat.prototype.reset = function() {
 Thermostat.prototype.powerSaveMode = function(bool) {
   if (bool) {
     this.powerSave = true
+    this.maxTemp = 25
+    return "Power Save Mode On"
+
   } else {
     this.powerSave = false
+    this.maxTemp = 32
+    return "Power Save Mode Off"
+
   }
 };
 
